@@ -2,7 +2,7 @@
 
 export default function Home() {
   return (
-    <div className="text-3xl text-sky-500">
+    <div className="text-3xl text-red-500">
       Bwitter
     </div>
   )
