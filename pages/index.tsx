@@ -1,9 +1,10 @@
+import Header from "@/components/Header";
 
 
 export default function Home() {
   return (
-    <div className="text-3xl text-red-500">
-      Bwitter
-    </div>
+    <>
+      <Header label="Home" />
+    </>
   )
 }
