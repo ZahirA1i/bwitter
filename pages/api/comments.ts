@@ -26,34 +26,34 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     try {
-        const post = await prisma.post.findUnique({
-          where: {
-            id: postId,
+      const post = await prisma.post.findUnique({
+        where: {
+          id: postId,
+        }
+      });
+
+      if (post?.userId) {
+        await prisma.notification.create({
+          data: {
+            body: 'Someone replied on your tweet!',
+            userId: post.userId
           }
         });
-  
-        if (post?.userId) {
-          await prisma.notification.create({
-            data: {
-              body: 'Someone replied on your tweet!',
-              userId: post.userId
-            }
-          });
-  
-          await prisma.user.update({
-            where: {
-              id: post.userId
-            },
-            data: {
-              hasNotification: true
-            }
-          });
-        }
+
+        await prisma.user.update({
+          where: {
+            id: post.userId
+          },
+          data: {
+            hasNotification: true
+          }
+        });
       }
-      catch (error) {
-        console.log(error);
-      }
-      
+    }
+    catch (error) {
+      console.log(error);
+    }
+
     return res.status(200).json(comment);
   } catch (error) {
     console.log(error);
