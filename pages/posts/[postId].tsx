@@ -1,5 +1,6 @@
 import Form from "@/components/Form";
 import Header from "@/components/Header";
+import CommentFeed from "@/components/posts/CommentFeed";
 import PostItem from "@/components/posts/PostItem";
 import usePost from "@/hooks/usePost";
 import { useRouter } from "next/router";
@@ -24,6 +25,7 @@ return (
     <Header showBackArrow label="Bweet" />
     <PostItem data={fetchedPost} />
     <Form postId={postId as string} isComment placeholder="Bweet your reply" />
+    <CommentFeed comments={fetchedPost?.comments} />
     </>
  );
 }
