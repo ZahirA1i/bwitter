@@ -101,7 +101,7 @@ const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
                 gap-2 
                 cursor-pointer 
                 transition 
-                hover:text-sky-500
+                hover:text-red-500
             ">
               <AiOutlineMessage size={20} />
               <p>
@@ -120,6 +120,7 @@ const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
                 transition 
                 hover:text-red-500
             ">
+                <AiOutlineHeart size={20} />
               
               <p>
                 {data.likedIds.length}
