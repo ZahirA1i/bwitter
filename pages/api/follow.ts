@@ -37,20 +37,20 @@ export default async function handler (
       try {
         await prisma.notification.create({
           data: {
-            body: 'Someone followed you',
-            userId
-          }
+            body: 'Someone followed you!',
+            userId,
+          },
         });
 
         await prisma.user.update({
           where: {
-            id: userId
+            id: userId,
           },
           data: {
-            hasNotification: true
+            hasNotification: true,
           }
-        })
-      } catch(error) {
+        });
+      } catch (error) {
         console.log(error);
       }
     }
